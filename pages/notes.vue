@@ -3,15 +3,23 @@
 
   <table v-if="notesStore.getNotesList.length > 0" class="table w-full">
     <thead>
-      <tr>
-        <th>Название</th>
-        <th class="text-right">Дата</th>
+      <tr class="select-none">
+        <th class="cursor-pointer" @click="notesStore.toggleSortTitle()">
+          <p class="mr-1 float-left">Название</p> 
+          <span v-show="notesStore.notesSort == 'title_desc'">↓</span>
+          <span v-show="notesStore.notesSort == 'title_asc'">↑</span>
+        </th>
+        <th class="text-right cursor-pointer" @click="notesStore.toggleSortDate()">
+          <span class="" v-show="notesStore.notesSort == 'date_desc'">↓</span>
+          <span class="" v-show="notesStore.notesSort == 'date_asc'">↑</span>
+          <p class="ml-1 inline-block">Дата</p> 
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr class="hover cursor-pointer" v-for="note in notesStore.getNotesList" :key="note.id">
         <td>{{ note.title }}</td>
-        <td class="text-right">{{ note.date.toLocaleString("ru-RU") }}</td>
+        <td class="text-right">{{ new Date(note.date).toLocaleString("ru-RU") }}</td>
       </tr>  
     </tbody>
   </table>

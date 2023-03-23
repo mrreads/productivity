@@ -1,6 +1,6 @@
 export default interface INote {
     id: string,
-    title: string | null,
+    title: string,
     content: string | null,
-    date: Date,
+    date: number,
 }
