@@ -35,10 +35,11 @@ export const useNotesStore = defineStore('notes', {
       this.notesList.push(note);
     },
     archiveNote(id: INote['id']) {
-      let note: any = this.notesList.filter((note: INote) => note.id === id);
-      let temp: INote = Object.assign({}, note, { delete: true } );
-      this.notesList = this.notesList.filter((note: INote) => note.id != id);
-      this.notesList.push(temp);
+      this.notesList.map(note => {
+        if (note.id === id) {
+          note.delete = true
+        }
+      });
     },
     deleteNote(id: INote['id']) {
       this.notesList = this.notesList.filter((note: INote) => note.id != id);
@@ -55,16 +56,17 @@ export const useNotesStore = defineStore('notes', {
     getNotesList: state => {
       switch(state.notesSort) {
         case 'date_asc':
-          return state.notesList.sort((a: INote, b: INote) => b.date - a.date).reverse();
+          return state.notesList.sort((a: INote, b: INote) => b.date - a.date).reverse().filter(note => note.delete == false);
         case 'date_desc':
-          return state.notesList.sort((a: INote, b: INote) => b.date - a.date);
+          return state.notesList.sort((a: INote, b: INote) => b.date - a.date).filter(note => note.delete == false);
         case 'title_asc':
-          return state.notesList.sort((a: INote, b: INote) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+          return state.notesList.sort((a: INote, b: INote) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())).filter(note => note.delete == false);
         case 'title_desc':
-          return state.notesList.sort((a: INote, b: INote) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())).reverse();
+          return state.notesList.sort((a: INote, b: INote) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())).reverse().filter(note => note.delete == false);
         default:
          return state.notesList;
        }
-    }
+      },
+      getNotesDeleteList: state => state.notesList.sort((a: INote, b: INote) => b.date - a.date).reverse().filter(note => note.delete == true)
   },
 })
