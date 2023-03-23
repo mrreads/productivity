@@ -8,7 +8,7 @@ type INotesSort = 'date_asc' | 'date_desc' | 'title_asc' | 'title_desc';
 
 export const useNotesStore = defineStore('notes', {
   state: () => ({
-    notesList: useStorage('notes', [] as INote[]),
+    notesList: useStorage('notes_list', [] as INote[]),
     notesSort: useStorage('notes_sort', 'date_desc' as INotesSort)
   }),
   actions: {
@@ -37,7 +37,7 @@ export const useNotesStore = defineStore('notes', {
       this.notesList.filter((note: INote) => note.id != id);
     },
     toggleSortDate() {
-      this.notesSort = (this.notesSort == 'date_asc') ? 'date_desc' : 'date_asc';
+      this.notesSort = (this.notesSort == 'date_desc') ? 'date_asc' : 'date_desc';
     },
     toggleSortTitle() {
       this.notesSort = (this.notesSort == 'title_asc') ? 'title_desc' : 'title_asc';
