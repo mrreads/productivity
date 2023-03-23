@@ -36,6 +36,6 @@ export const useNotesStore = defineStore('notes', {
   },
 
   getters: {
-    getNotesList: state => state.notesList.sort((a: INote, b: INote) => Date.parse(a.date) - Date.parse(b.date)) as INote[],
+    getNotesList: state => state.notesList.sort((a: INote, b: INote) => b.date.getTime() - a.date.getTime()) as INote[],
   },
 })
