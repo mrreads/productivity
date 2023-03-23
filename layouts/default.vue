@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-row pt-5 pl-5 w-full h-full gap-4">
         <Navigation :RESPONSE_WIDTH="RESPONSE_WIDTH" :MOBILE_WIDTH="MOBILE_WIDTH" :clientWidth="clientWidth" :expand="expand" :mobileClass="mobileClass" :expandClass="expandClass" :changeExpand="changeExpand"/>
-        <div v-bind:class="mobileClass"  class="border-base-300 bg-base-300 bg-cover bg-top rounded-tl-box w-full p-10 transition-all">
+        <div v-bind:class="mobileClass" class="border-base-300 bg-base-300 bg-cover bg-top rounded-tl-box w-full p-10 transition-all overflow-y-auto">
             <slot />
         </div>
     </div>

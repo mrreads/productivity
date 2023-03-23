@@ -9,11 +9,17 @@
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "^3.2.0",
-    "@nuxtjs/tailwindcss": "^6.6.0",
+    "@nuxtjs/tailwindcss": "^6.6.4",
     "@tailwindcss/typography": "^0.5.9",
     "nuxt": "^3.3.1"
   },
   "dependencies": {
-    "daisyui": "^2.51.4"
+    "@pinia/nuxt": "^0.4.7",
+    "daisyui": "^2.51.5",
+    "nanoid": "^4.0.1",
+    "pinia": "^2.0.33"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }
