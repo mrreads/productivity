@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-row pt-5 pl-5 w-full h-full gap-4">
+    <div class="flex flex-row pt-5 w-full h-full transition-all gap-5 pl-5 lg:pl-4 lg:gap-4 md:pl-3 md:gap-2 sm:pl-1 sm:gap-5">
         <Navigation :RESPONSE_WIDTH="RESPONSE_WIDTH" :MOBILE_WIDTH="MOBILE_WIDTH" :clientWidth="clientWidth" :expand="expand" :mobileClass="mobileClass" :expandClass="expandClass" :changeExpand="changeExpand"/>
-        <div v-bind:class="mobileClass" class="border-base-300 bg-base-300 bg-cover bg-top rounded-tl-box w-full p-10 transition-all overflow-y-auto">
+        <div v-bind:class="mobileClass" class="border-base-300 bg-base-300 bg-cover bg-top rounded-tl-box w-full transition-all overflow-y-auto p-10 xl:px-8 lg:px-7 md:px-6 sm:px-5">
             <client-only>
                 <slot />
             </client-only>
@@ -13,8 +13,8 @@
     export default {
         data() {
             return {
-                MOBILE_WIDTH: 590,
-                RESPONSE_WIDTH: 1024,
+                MOBILE_WIDTH: 640, //sm
+                RESPONSE_WIDTH: 1024, //lg
                 clientWidth: 0,
                 expand: false
             }

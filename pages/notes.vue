@@ -1,25 +1,31 @@
 <template>
   <h1 class="mb-6 mt-[-1rem]">Заметки</h1>
 
-  <table v-if="notesStore.getNotesList.length > 0" class="table w-full">
+  <table v-if="notesStore.getNotesList.length > 0" class="table table-fixed w-full">
     <thead>
       <tr class="select-none">
-        <th class="cursor-pointer" @click="notesStore.toggleSortTitle()">
-          <p class="mr-1 float-left">Название</p> 
+        <th class="flex flex-row w-full">
+          <p class="mr-1 float-left cursor-pointer" @click="notesStore.toggleSortTitle()">Название</p> 
           <span v-show="notesStore.notesSort == 'title_desc'">↓</span>
           <span v-show="notesStore.notesSort == 'title_asc'">↑</span>
+
+          <div class="text-right hidden flex-grow ml-2 sm:inline-block">
+            <span v-show="notesStore.notesSort == 'date_desc'">↓</span>
+            <span v-show="notesStore.notesSort == 'date_asc'">↑</span>
+            <p class="ml-1 inline-block cursor-pointer opacity-90" @click="notesStore.toggleSortDate()">Дата</p> 
+          </div>
         </th>
-        <th class="text-right cursor-pointer" @click="notesStore.toggleSortDate()">
+        <th class="text-right w-48 sm:hidden">
           <span class="" v-show="notesStore.notesSort == 'date_desc'">↓</span>
           <span class="" v-show="notesStore.notesSort == 'date_asc'">↑</span>
-          <p class="ml-1 inline-block">Дата</p> 
+          <p class="ml-1 inline-block cursor-pointer" @click="notesStore.toggleSortDate()">Дата</p> 
         </th>
       </tr>
     </thead>
     <tbody>
       <tr class="hover cursor-pointer" v-for="note in notesStore.getNotesList" :key="note.id">
-        <td>{{ note.title }}</td>
-        <td class="text-right">{{ new Date(note.date).toLocaleString("ru-RU") }}</td>
+        <td class="w-full"><p class="truncate">{{ note.title }}</p></td>
+        <td class="text-right  w-48 lg:text-sm sm:hidden"> <p class="opacity-60">{{ new Date(note.date).toLocaleString("ru-RU") }}</p></td>
       </tr>  
     </tbody>
   </table>

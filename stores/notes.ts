@@ -17,8 +17,8 @@ export const useNotesStore = defineStore('notes', {
         id: nanoid(),
         title: 'Без названия',
         content: null,
-        date: new Date().getTime()
-
+        date: new Date().getTime(),
+        delete: false,
       }
       this.notesList.push(note)
       return note.id;
@@ -28,13 +28,20 @@ export const useNotesStore = defineStore('notes', {
         id: id,
         title: title,
         content: content,
-        date: new Date().getTime()
+        date: new Date().getTime(),
+        delete: false
       }
       this.notesList.filter((note: INote) => note.id != id);
       this.notesList.push(note);
     },
+    archiveNote(id: INote['id']) {
+      let note: any = this.notesList.filter((note: INote) => note.id === id);
+      let temp: INote = Object.assign({}, note, { delete: true } );
+      this.notesList = this.notesList.filter((note: INote) => note.id != id);
+      this.notesList.push(temp);
+    },
     deleteNote(id: INote['id']) {
-      this.notesList.filter((note: INote) => note.id != id);
+      this.notesList = this.notesList.filter((note: INote) => note.id != id);
     },
     toggleSortDate() {
       this.notesSort = (this.notesSort == 'date_desc') ? 'date_asc' : 'date_desc';
