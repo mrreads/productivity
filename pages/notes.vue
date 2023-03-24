@@ -24,8 +24,10 @@
     </thead>
     <tbody>
       <tr class="hover cursor-pointer" v-for="note in notesStore.getNotesList" :key="note.id" oncontextmenu="return false;" @contextmenu="showContextMenu($event, note)">
-        <td class="w-full"><p class="truncate">{{ note.title }}</p></td>
-        <td class="text-right  w-48 lg:text-sm sm:hidden"> <p class="opacity-60">{{ new Date(note.date).toLocaleString("ru-RU") }}</p></td>
+        <NuxtLink :to="{ path: '/note/' + note.id }">
+          <td class="w-full"><p class="truncate">{{ note.title }}</p></td>
+          <td class="text-right  w-48 lg:text-sm sm:hidden"> <p class="opacity-60">{{ new Date(note.date).toLocaleString("ru-RU") }}</p></td>
+        </NuxtLink>
       </tr>
     </tbody>
   </table>

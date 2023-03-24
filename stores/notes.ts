@@ -12,6 +12,9 @@ export const useNotesStore = defineStore('notes', {
     notesSort: useStorage('notes_sort', 'date_desc' as INotesSort)
   }),
   actions: {
+    getCurrentNote(id: INote['id']) {
+      return this.notesList.filter((note: INote) => note.id === id)[0];
+    },
     addEmptyNote() {
       let note: INote = {
         id: nanoid(),
