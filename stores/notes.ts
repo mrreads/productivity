@@ -20,6 +20,7 @@ export const useNotesStore = defineStore('notes', {
         id: nanoid(),
         title: 'Без названия',
         content: null,
+        created_at: new Date().getTime(),
         date: new Date().getTime(),
         delete: false,
       }
@@ -27,15 +28,13 @@ export const useNotesStore = defineStore('notes', {
       return note.id;
     },
     saveExistNote(id: INote['id'], title: INote['title'], content: INote['content']) {
-      let note: INote = {
-        id: id,
-        title: title,
-        content: content,
-        date: new Date().getTime(),
-        delete: false
-      }
-      this.notesList.filter((note: INote) => note.id != id);
-      this.notesList.push(note);
+      this.notesList.map(note => {
+        if (note.id === id) {
+          note.title = title,
+          note.content = content,
+          note.date = new Date().getTime()
+        }
+      });
     },
     archiveNote(id: INote['id']) {
       this.notesList.map(note => {

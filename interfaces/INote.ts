@@ -3,5 +3,6 @@ export default interface INote {
     title: string,
     content: string | null,
     delete: boolean
+    created_at: number,
     date: number,
 }

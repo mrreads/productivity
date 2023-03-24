@@ -24,10 +24,16 @@
     </thead>
     <tbody>
       <tr class="hover cursor-pointer" v-for="note in notesStore.getNotesList" :key="note.id" oncontextmenu="return false;" @contextmenu="showContextMenu($event, note)">
-        <NuxtLink :to="{ path: '/note/' + note.id }">
-          <td class="w-full"><p class="truncate">{{ note.title }}</p></td>
-          <td class="text-right  w-48 lg:text-sm sm:hidden"> <p class="opacity-60">{{ new Date(note.date).toLocaleString("ru-RU") }}</p></td>
-        </NuxtLink>
+        <td class="w-full p-0">
+          <NuxtLink :to="{ path: '/note/' + note.id }">
+            <p class="p-4 truncate"> {{ note.title }}</p>
+          </NuxtLink>
+        </td>
+        <td class="text-right  w-48 p-0 lg:text-sm sm:hidden">
+          <NuxtLink :to="{ path: '/note/' + note.id }">
+            <p class="p-4 opacity-60" :title="'Создано: ' + new Date(note.created_at).toLocaleString('ru-RU')" >{{ new Date(note.date).toLocaleString("ru-RU") }}</p>
+          </NuxtLink>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -36,7 +42,7 @@
   <button class="btn px-12 mt-6 sticky bottom-0 right-full" @click="notesStore.addEmptyNote()">Создать заметку</button>
 
   <ContextMenu :enable="contextEnabled" :position="contextPosition" :close="() => contextEnabled = false">
-    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-52">
+    <ul tabindex="0" class="dropdown-content menu p-2 rounded-box shadow bg-base-200 w-52">
       <li><a @click="archiveNotes">Удалить</a></li>
     </ul>
   </ContextMenu>

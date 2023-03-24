@@ -73,6 +73,9 @@ html, body, #__nuxt {
 .ce-inline-tool {
     @apply rounded-box;
 }
+.ce-popover {
+    @apply rounded-box;
+}
 .cdx-search-field, .ce-inline-tool-input {
     @apply bg-base-100 !important;
 }
