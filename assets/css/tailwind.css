@@ -12,7 +12,7 @@ html, body, #__nuxt {
         @apply text-5xl font-extrabold;
     }
     h2 {
-      @apply text-4xl font-bold;
+        @apply text-4xl font-bold;
     }
     h3 {
         @apply text-3xl font-bold;
@@ -26,4 +26,90 @@ html, body, #__nuxt {
     h6 {
         @apply text-lg font-bold;
     }
-  }
+}
+.codex-editor__redactor {
+    @apply bg-base-100 rounded-box py-3 !important; 
+}
+.cdx-block {
+    @apply max-w-full;
+}
+.ce-block__content {
+    @apply px-5 pl-5 pr-0 ml-auto mr-0 max-w-full rounded-tl-box rounded-bl-box !important;
+}
+
+.ce-toolbar__actions {
+    @apply -mr-5 !important;
+}
+
+.ce-inline-toolbar {
+    @apply bg-base-300 border-base-300 shadow-md !important;
+}
+.ce-block--selected .ce-block__content {
+    @apply bg-base-300 !important;
+}
+.ce-inline-tool--active {
+    color: hsl(var(--p) / var(--tw-bg-opacity));
+}
+.cdx-input {
+    
+}
+.cdx-loader {
+    
+}
+.cdx-button {
+    @apply bg-base-200 border-base-300 shadow-md !important;
+}
+
+.ce-toolbar__plus, .ce-toolbar__settings-btn, .ce-toolbar__plus, .ce-toolbar__settings-btn {
+    color: hsl(var(--p) / var(--tw-bg-opacity));
+    @apply bg-base-200 border-none hover:bg-base-300 rounded-box !important;
+}
+.cdx-search-field {
+    @apply rounded-box;
+}
+.ce-inline-toolbar {
+    @apply rounded-box;
+}
+.ce-inline-tool {
+    @apply rounded-box;
+}
+.cdx-search-field, .ce-inline-tool-input {
+    @apply bg-base-100 !important;
+}
+.cdx-search-field:focus {
+    @apply bg-base-100 !important;
+}
+
+.ce-popover {
+    @apply bg-base-200 border-base-300 shadow-md !important;
+}
+.ce-popover__item {
+    @apply bg-base-200 border-base-100 !important;
+}
+.ce-popover__item:hover {
+    @apply bg-base-300 border-base-300 !important;
+}
+.ce-popover__item-icon {
+    @apply bg-base-100 border-none outline-none shadow-none rounded-box !important;
+}
+
+.ce-popover__item--confirmation .ce-popover__item-label {
+    color: hsl(var(--p) / var(--tw-bg-opacity));
+}
+
+.ce-block__content, 
+.ce-toolbar__content { 
+    max-width: calc(100% - 100px) !important; 
+} 
+.cdx-block { 
+    max-width: 100% !important; 
+}
+
+@media screen and (max-width: 650px) {
+    .ce-toolbar__actions {
+        @apply -mt-9 -ml-10;
+    }
+    .ce-block__content {
+        @apply pr-0 pl-1 max-w-full;
+    }
+}
